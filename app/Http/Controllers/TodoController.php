@@ -10,6 +10,14 @@ class TodoController extends Controller
 {
     public function index()
     {
-        return view('todo');
+        $tasks = Task::select(
+                'label'
+            )
+            ->get()
+        ;
+
+        return view('todo')
+            ->with('tasks', $tasks)
+        ;
     }
 }
