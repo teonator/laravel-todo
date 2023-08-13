@@ -20,4 +20,12 @@ class TodoController extends Controller
             ->with('tasks', $tasks)
         ;
     }
+
+    public function add(Request $request) {
+        $task = Task::create([
+            'label' => $request->task,
+        ]);
+
+        return redirect('/');
+    }
 }

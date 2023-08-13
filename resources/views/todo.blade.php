@@ -15,6 +15,12 @@
             <div class="card">
                 <div class="card-body p-5">
 
+                    <form action="/tasks/add" method="post" class="d-flex mb-1">
+                        @csrf
+                        <input type="text" class="form-control me-2" placeholder="New task..." name="task" />
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i></button>
+                    </form>
+
                     <div class="d-flex align-items-center mt-4">
                         <h4 class="flex-fill m-0">Tasks</h4>
                     </div>
