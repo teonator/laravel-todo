@@ -11,7 +11,8 @@ class TodoController extends Controller
     public function index()
     {
         $tasks = Task::select(
-                'label'
+                'id',
+                'label',
             )
             ->get()
         ;
@@ -25,6 +26,12 @@ class TodoController extends Controller
         $task = Task::create([
             'label' => $request->task,
         ]);
+
+        return redirect('/');
+    }
+
+    public function delete(Request $request, string $id) {
+        Task::destroy($id);
 
         return redirect('/');
     }

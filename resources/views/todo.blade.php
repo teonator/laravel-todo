@@ -33,7 +33,7 @@
                                 </a>
                                 <p class="flex-grow-1 mb-0 text-secondary">{{ $task['label'] }}</p>
 
-                                <a class="btn btn-sm text-danger" href="">
+                                <a class="btn btn-sm text-danger" href="{{ route('tasks.delete', ['id' => $task['id']]) }}">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </div>
