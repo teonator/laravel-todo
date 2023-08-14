@@ -19,5 +19,6 @@ Route::get('/', [TodoController::class, 'index']);
 
 Route::name('tasks.')->group(function () {
     Route::post('/add', [TodoController::class, 'add'])->name('add');
+    Route::get('/{id}/edit', [TodoController::class, 'edit'])->name('edit');
     Route::get('/{id}/delete', [TodoController::class, 'delete'])->name('delete');
 });

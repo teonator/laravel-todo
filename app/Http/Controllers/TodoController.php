@@ -13,6 +13,7 @@ class TodoController extends Controller
         $tasks = Task::select(
                 'id',
                 'label',
+                'done',
             )
             ->get()
         ;
@@ -26,6 +27,14 @@ class TodoController extends Controller
         $task = Task::create([
             'label' => $request->task,
         ]);
+
+        return redirect('/');
+    }
+
+    public function edit(Request $request, string $id) {
+        Task::where('id', $id)
+            ->update(['done' => $request->query('done', false)])
+        ;
 
         return redirect('/');
     }
