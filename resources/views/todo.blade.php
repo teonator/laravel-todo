@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-body p-5">
 
-                    <form action="/tasks/add" method="post" class="d-flex mb-1">
+                    <form action="{{ route('tasks.add') }}" method="post" class="d-flex mb-1">
                         @csrf
                         <input type="text" class="form-control me-2" placeholder="New task..." name="task" />
                         <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i></button>

@@ -17,6 +17,6 @@ use App\Http\Controllers\TodoController;
 
 Route::get('/', [TodoController::class, 'index']);
 
-Route::prefix('tasks')->group(function () {
-    Route::post('/add', [TodoController::class, 'add']);
+Route::name('tasks.')->group(function () {
+    Route::post('/add', [TodoController::class, 'add'])->name('add');
 });
