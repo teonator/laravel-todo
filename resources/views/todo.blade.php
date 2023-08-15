@@ -21,6 +21,14 @@
                         <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i></button>
                     </form>
 
+                    @if ($errors->any())
+                        <div>
+                            @foreach ($errors->all() as $error)
+                                <span class="text-danger">{{ $error }}</span>
+                            @endforeach
+                        </div>
+                    @endif
+
                     <div class="d-flex align-items-center mt-4">
                         <h4 class="flex-fill m-0">Tasks</h4>
                     </div>

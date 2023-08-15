@@ -8,8 +8,7 @@ use App\Models\Task;
 
 class TodoController extends Controller
 {
-    public function index()
-    {
+    public function index() {
         $tasks = Task::select(
                 'id',
                 'label',
@@ -24,6 +23,10 @@ class TodoController extends Controller
     }
 
     public function add(Request $request) {
+        $validated = $request->validate([
+            'task' => 'required',
+        ]);
+
         $task = Task::create([
             'label' => $request->task,
         ]);
