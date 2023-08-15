@@ -34,17 +34,17 @@
 
                         <ul class="nav nav-underline flex-fill justify-content-end">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('tasks.index') }}">
+                                <a class="nav-link {{ request()->get('filter', '') == '' ? 'active' : '' }}" href="{{ route('tasks.index') }}">
                                     All
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('tasks.index', ['filter'=>'pending']) }}">
+                                <a class="nav-link {{ request()->get('filter', '') == 'pending' ? 'active' : '' }}" href="{{ route('tasks.index', ['filter'=>'pending']) }}">
                                     Pending
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('tasks.index', ['filter'=>'done']) }}">
+                                <a class="nav-link {{ request()->get('filter', '') == 'done' ? 'active' : '' }}" href="{{ route('tasks.index', ['filter'=>'done']) }}">
                                     Done
                                 </a>
                             </li>
