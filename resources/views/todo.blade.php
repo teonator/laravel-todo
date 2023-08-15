@@ -34,17 +34,17 @@
 
                         <ul class="nav nav-underline flex-fill justify-content-end">
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->get('filter', '') == '' ? 'active' : '' }}" href="{{ route('tasks.index') }}">
+                                <a class="nav-link {{ $filter == '' ? 'active' : '' }}" href="{{ route('tasks.index') }}">
                                     All ({{ $all }})
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->get('filter', '') == 'pending' ? 'active' : '' }}" href="{{ route('tasks.index', ['filter'=>'pending']) }}">
+                                <a class="nav-link {{ $filter == 'pending' ? 'active' : '' }}" href="{{ route('tasks.index', ['filter'=>'pending']) }}">
                                     Pending ({{ $pending }})
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->get('filter', '') == 'done' ? 'active' : '' }}" href="{{ route('tasks.index', ['filter'=>'done']) }}">
+                                <a class="nav-link {{ $filter == 'done' ? 'active' : '' }}" href="{{ route('tasks.index', ['filter'=>'done']) }}">
                                     Done ({{ $done }})
                                 </a>
                             </li>
@@ -64,7 +64,7 @@
                                 </a>
                             </div>
                         @empty
-                            <p class="mt-4 text-center">Hooray! You don't have any task.</p>
+                            <p class="mt-4 text-center">Hooray! You don't have any {{ $filter }} task.</p>
                         @endforelse
                     </div>
 

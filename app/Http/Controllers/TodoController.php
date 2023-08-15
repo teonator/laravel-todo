@@ -9,6 +9,8 @@ use App\Models\Task;
 class TodoController extends Controller
 {
     public function index(Request $request) {
+        $filter = $request->query('filter', '');
+
         $query = Task::select(
                 'id',
                 'label',
@@ -16,7 +18,7 @@ class TodoController extends Controller
             )
         ;
 
-        switch ($request->query('filter', '')) {
+        switch($filter) {
             case 'pending':
                 $query->where('done', false);
                 break;
@@ -31,6 +33,7 @@ class TodoController extends Controller
             ->with('all', Task::count())
             ->with('pending', Task::where('done', false)->count())
             ->with('done', Task::where('done', true)->count())
+            ->with('filter', $filter)
         ;
     }
 
