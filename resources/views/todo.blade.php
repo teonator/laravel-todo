@@ -31,6 +31,24 @@
 
                     <div class="d-flex align-items-center mt-4">
                         <h4 class="flex-fill m-0">Tasks</h4>
+
+                        <ul class="nav nav-underline flex-fill justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('tasks.index') }}">
+                                    All
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('tasks.index', ['filter'=>'pending']) }}">
+                                    Pending
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('tasks.index', ['filter'=>'done']) }}">
+                                    Done
+                                </a>
+                            </li>
+                        </ul>
                     </div>
 
                     <div class="list-group mt-3">

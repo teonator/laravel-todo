@@ -8,17 +8,26 @@ use App\Models\Task;
 
 class TodoController extends Controller
 {
-    public function index() {
-        $tasks = Task::select(
+    public function index(Request $request) {
+        $query = Task::select(
                 'id',
                 'label',
                 'done',
             )
-            ->get()
         ;
 
+        switch ($request->query('filter', '')) {
+            case 'pending':
+                $query->where('done', false);
+                break;
+
+            case 'done':
+                $query->where('done', true);
+                break;
+        }
+
         return view('todo')
-            ->with('tasks', $tasks)
+            ->with('tasks', $query->get())
         ;
     }
 
