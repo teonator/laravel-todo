@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Services\TaskService;
-use App\Models\Task;
 
 class TodoController extends Controller
 {
