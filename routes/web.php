@@ -16,12 +16,10 @@ use App\Http\Controllers\TodoController;
 */
 
 // Route::get('/', [TodoController::class, 'index'])->name('s.index');
-Route::get('/', function(){
-    return redirect()->route('tasks.index');
-});
+Route::get('/', [TodoController::class, 'index'])->name('index');
 
-Route::name('tasks.')->group(function(){
-    Route::get('/tasks', [TodoController::class, 'index'])->name('index');
+Route::prefix('tasks')->name('tasks.')->group(function(){
+    Route::get('/', [TodoController::class, 'index'])->name('index');
     Route::post('/add', [TodoController::class, 'add'])->name('add');
     Route::get('/{id}/edit', [TodoController::class, 'edit'])->name('edit');
     Route::get('/{id}/delete', [TodoController::class, 'delete'])->name('delete');
