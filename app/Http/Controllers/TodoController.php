@@ -41,9 +41,7 @@ class TodoController extends Controller
     }
 
     public function edit(Request $request, string $id) {
-        Task::where('id', $id)
-            ->update(['done' => $request->query('done', false)])
-        ;
+        $this->taskService->editTask($id, $request->boolean('done', false));
 
         return redirect('/');
     }

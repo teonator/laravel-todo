@@ -6,29 +6,37 @@ use App\Models\Task;
 
 class TaskService
 {
-    public function getTasks( string $filter = '' )
+    public function getTasks(string $filter = '')
     {
         return $this
-            ->_buildQuery( $filter )
+            ->_buildQuery($filter)
             ->get()
         ;
     }
 
-    public function getTaskCount( string $filter = '' )
+    public function getTaskCount(string $filter = '')
     {
         return $this
-            ->_buildQuery( $filter )
+            ->_buildQuery($filter)
             ->count()
         ;
     }
 
-    public function addTask( string $label ) {
+    public function addTask(string $label) {
         return Task::create([
             'label' => $label,
         ]);
     }
 
-    private function _buildQuery( string $filter = '' )
+    public function editTask(string $id, bool $done) {
+        Task::where('id', $id)
+            ->update([
+                'done' => $done
+            ])
+        ;
+    }
+
+    private function _buildQuery(string $filter = '' )
     {
         $query = Task::select(
                 'id',
