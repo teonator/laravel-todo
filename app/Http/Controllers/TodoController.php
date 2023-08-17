@@ -35,9 +35,7 @@ class TodoController extends Controller
             'task' => 'required',
         ]);
 
-        $task = Task::create([
-            'label' => $request->task,
-        ]);
+        $taskId = $this->taskService->addTask($request->task);
 
         return redirect('/');
     }

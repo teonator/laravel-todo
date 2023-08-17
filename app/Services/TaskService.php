@@ -22,6 +22,12 @@ class TaskService
         ;
     }
 
+    public function addTask( string $label ) {
+        return Task::create([
+            'label' => $label,
+        ]);
+    }
+
     private function _buildQuery( string $filter = '' )
     {
         $query = Task::select(
