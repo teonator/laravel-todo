@@ -4,32 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Services\TaskService;
 use App\Models\Task;
 
 class TodoController extends Controller
 {
+    protected $taskService;
+
+    public function __construct(TaskService $taskService)
+    {
+        $this->taskService = $taskService;
+    }
+
     public function index(Request $request) {
         $filter = $request->query('filter', '');
 
-        $query = Task::select(
-                'id',
-                'label',
-                'done',
-            )
-        ;
-
-        switch($filter) {
-            case 'pending':
-                $query->where('done', false);
-                break;
-
-            case 'done':
-                $query->where('done', true);
-                break;
-        }
+        $tasks = $this->taskService->getTasks($filter);
 
         return view('todo')
-            ->with('tasks', $query->get())
+            ->with('tasks', $tasks)
             ->with('all', Task::count())
             ->with('pending', Task::where('done', false)->count())
             ->with('done', Task::where('done', true)->count())
