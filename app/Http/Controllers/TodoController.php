@@ -23,9 +23,9 @@ class TodoController extends Controller
 
         return view('todo')
             ->with('tasks', $tasks)
-            ->with('all', Task::count())
-            ->with('pending', Task::where('done', false)->count())
-            ->with('done', Task::where('done', true)->count())
+            ->with('all', $this->taskService->getTaskCount())
+            ->with('pending', $this->taskService->getTaskCount('pending'))
+            ->with('done', $this->taskService->getTaskCount('done'))
             ->with('filter', $filter)
         ;
     }
