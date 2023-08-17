@@ -36,7 +36,11 @@ class TaskService
         ;
     }
 
-    private function _buildQuery(string $filter = '' )
+    public function deleteTask(string $id) {
+        Task::destroy($id);
+    }
+
+    private function _buildQuery(string $filter = '')
     {
         $query = Task::select(
                 'id',

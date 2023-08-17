@@ -47,7 +47,7 @@ class TodoController extends Controller
     }
 
     public function delete(Request $request, string $id) {
-        Task::destroy($id);
+        $this->taskService->deleteTask($id);
 
         return redirect('/');
     }
